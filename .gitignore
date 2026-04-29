@@ -1,4 +1,6 @@
 # Binaries
+# Allow the pre-built binary for users
+!mama-toolkit.exe
 *.exe
 *.exe~
 mama-toolkit

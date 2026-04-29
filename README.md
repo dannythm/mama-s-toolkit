@@ -19,9 +19,21 @@ Mama's Toolkit is designed to be a high-performance, zero-dependency companion t
 -   **🎭 Deck & Character Visualizer**: Real-time rendering of player decks, including character art, weapons, companions, and sub-weapons.
 -   **✨ Premium UI**: Fully dark-themed, responsive interface with custom-styled controls and high-contrast tables.
 
-## Prerequisites
+## Installation
 
--   **Go 1.21+** (for building)
+### For Users (Pre-built Binary)
+1.  Download `mama-toolkit.exe` from the repository.
+2.  Place it in your desired directory (ensure relative paths to `lunar-tear` are correct, or use command-line flags).
+
+### For Developers (Build from source)
+-   **Prerequisites**: Go 1.21+
+-   **Build**:
+    ```powershell
+    go build -o mama-toolkit.exe ./cmd/mama-toolkit
+    ```
+
+## Prerequisites (Data)
+
 -   **Lunar-tear Environment**: 
     -   Game database: `../lunar-tear/server/db/game.db`
     -   Pristine master data: `../lunar-tear/server/assets/release/20240404193219.bin.e`
@@ -29,17 +41,12 @@ Mama's Toolkit is designed to be a high-performance, zero-dependency companion t
 
 ## Quick Start
 
-### 1. Build the binary
-```powershell
-go build -o mama-toolkit.exe ./cmd/mama-toolkit
-```
-
-### 2. Run the server
+### 1. Run the server
 ```powershell
 ./mama-toolkit.exe --port 8084
 ```
 
-### 3. Access the UI
+### 2. Access the UI
 Open `http://localhost:8084` in your browser.
 
 ## Configuration
