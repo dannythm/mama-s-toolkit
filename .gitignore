@@ -1,0 +1,16 @@
+# Binaries
+*.exe
+*.exe~
+mama-toolkit
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/
+
+# Local data / caches
+/data/
+/output/

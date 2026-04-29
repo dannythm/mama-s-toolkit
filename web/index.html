@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mama's Toolbox</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="bg-symbol" aria-hidden="true"></div>
+  <div class="page-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark">
+          <img src="/images/mama%20logo/mama.jpg" alt="Mama logo">
+        </div>
+        <p class="eyebrow">Local Save Tool</p>
+        <h1>Mama's Toolbox</h1>
+        <div class="brand-nav">
+          <button id="home-button" class="ghost-button">Home</button>
+          <button id="bundles-button" class="ghost-button">Bundles</button>
+          <button id="banner-button" class="ghost-button">Banners</button>
+          <button id="events-button" class="ghost-button">Events</button>
+        </div>
+      </div>
+
+      <section class="panel hidden" id="presets-panel">
+        <div class="section-title">
+          <h2>Presets</h2>
+          <button id="presets-clear" class="ghost-button">Clear</button>
+        </div>
+        <p id="presets-status" class="muted">Loading presets…</p>
+        <div id="presets-list" class="preset-list"></div>
+        <div class="toolbar">
+          <button id="presets-reload" class="ghost-button">Reload</button>
+          <button id="presets-apply-add" class="ghost-button">Add</button>
+          <button id="presets-apply-replace" class="primary-button">Replace</button>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Database</h2>
+        <p id="db-path" class="mono muted">Loading…</p>
+        <div class="stat-grid" id="overview-stats"></div>
+      </section>
+
+      <section class="panel">
+        <div class="section-title">
+          <h2>Users</h2>
+          <button id="refresh-users" class="ghost-button">Refresh</button>
+        </div>
+        <div id="users-empty" class="empty-state hidden">
+          No users found in the current database.
+        </div>
+        <div id="user-list" class="user-list"></div>
+      </section>
+    </aside>
+
+    <main class="main">
+      <div id="home-view">
+      <section class="panel" id="homepage-panel">
+        <div class="section-title">
+          <div>
+            <p class="eyebrow">Homepage</p>
+            <h2>User Overview</h2>
+          </div>
+        </div>
+        <div id="homepage-users" class="homepage-users"></div>
+      </section>
+      </div>
+
+      <div id="bundles-view" class="hidden">
+      <section class="panel" id="bundles-panel">
+        <div class="section-title">
+          <div>
+            <p class="eyebrow">Content Manager</p>
+            <h2>Monthly Bundles</h2>
+          </div>
+          <div class="toolbar">
+            <button id="bundles-regenerate" class="ghost-button">Regenerate Index</button>
+            <button id="bundles-apply" class="primary-button">Apply &amp; Patch</button>
+          </div>
+        </div>
+        <p id="bundles-status" class="muted">Loading bundle index…</p>
+
+        <div class="bundles-controls">
+          <div class="bundles-control-row">
+            <label class="filter-toggle">
+              <input id="bundles-unreleased" type="checkbox">
+              <span>Include unreleased content</span>
+            </label>
+            <button id="bundles-select-all" class="ghost-button">Select All</button>
+            <button id="bundles-clear-all" class="ghost-button">Clear All</button>
+          </div>
+        </div>
+
+        <div class="bundles-summary">
+          <div id="bundles-summary-stats" class="selection-stats"></div>
+        </div>
+
+        <div id="bundles-grid" class="bundles-grid"></div>
+      </section>
+      </div>
+
+      <div id="banner-view" class="hidden">
+      <section class="panel" id="banner-panel">
+        <div class="section-title">
+          <div>
+            <p class="eyebrow">Master Data</p>
+            <h2>Applied Banners</h2>
+          </div>
+          <div class="toolbar">
+            <button id="banner-select-all" class="ghost-button">Select All</button>
+            <button id="banner-clear-all" class="ghost-button">Clear All</button>
+            <button id="banner-reload" class="ghost-button">Reload</button>
+            <button id="banner-save" class="primary-button">Save Banners</button>
+          </div>
+        </div>
+        <p id="banner-status" class="muted">Loading banner catalog…</p>
+        <div class="banner-subnav">
+          <button id="banner-usable-tab" class="ghost-button active">Usable</button>
+          <button id="banner-unusable-tab" class="ghost-button">Unusable</button>
+        </div>
+        <div class="banner-applied-panel">
+          <div class="banner-applied-header">
+            <div class="banner-applied-heading">Will Apply In Game</div>
+            <button id="banner-selected-toggle" class="ghost-button">Selected Only</button>
+          </div>
+          <div id="banner-summary-stats" class="selection-stats"></div>
+          <div id="banner-applied-summary" class="muted">Loading applied banner summary…</div>
+          <div id="banner-applied-list" class="banner-applied-list"></div>
+        </div>
+        <input id="banner-search" class="table-search" type="search" placeholder="Search banner names, assets, ids, or groups" />
+        <div id="banner-list" class="banner-list"></div>
+      </section>
+      </div>
+
+      <div id="events-view" class="hidden">
+      <section class="panel" id="events-panel">
+        <div class="section-title">
+          <div>
+            <p class="eyebrow">Master Data</p>
+            <h2>Event Selector</h2>
+          </div>
+          <div class="toolbar">
+            <button id="events-select-all" class="ghost-button">Select All</button>
+            <button id="events-clear-all" class="ghost-button">Clear All</button>
+            <button id="events-reload" class="ghost-button">Reload</button>
+            <button id="events-save" class="primary-button">Save Events</button>
+          </div>
+        </div>
+        <p id="events-status" class="muted">Loading event catalog…</p>
+        <div class="banner-subnav">
+          <button id="events-event-tab" class="ghost-button active">Event</button>
+          <button id="events-side-tab" class="ghost-button">Side Story</button>
+        </div>
+        <div id="events-category-nav" class="banner-subnav"></div>
+        <div class="banner-applied-panel">
+          <div class="banner-applied-header">
+            <div class="banner-applied-heading">Will Apply In Game</div>
+            <button id="events-selected-toggle" class="ghost-button">Selected Only</button>
+          </div>
+          <div id="events-summary-stats" class="selection-stats"></div>
+          <div id="events-applied-summary" class="muted">Loading applied event summary…</div>
+          <div id="events-applied-list" class="banner-applied-list"></div>
+        </div>
+        <input id="events-search" class="table-search" type="search" placeholder="Search event names, groups, ids, or quest details" />
+        <div id="events-list" class="banner-list"></div>
+      </section>
+      </div>
+
+      <div id="editor-view" class="hidden">
+      <header class="hero panel">
+        <div class="hero-copy">
+          <p class="eyebrow">Editor Workspace</p>
+          <h2 id="hero-title">Select a user</h2>
+          <p id="hero-subtitle" class="muted">Every table in the SQLite file is now exposed through the editor, with user-scoped tables filtered by the selected player.</p>
+          <div class="hero-deck-toolbar hidden" id="hero-deck-toolbar">
+            <label class="hero-deck-label" for="deck-select">Deck View</label>
+            <select id="deck-select" class="table-select"></select>
+          </div>
+        </div>
+        <div class="hero-screen" id="hero-screen">
+          <div class="deck-visual hidden" id="deck-visual"></div>
+          <div id="hero-fallback-image" class="hero-fallback-art" aria-hidden="true"></div>
+        </div>
+      </header>
+
+      <section class="panel hidden" id="user-summary-panel">
+        <div class="section-title">
+          <div>
+            <p class="eyebrow">Selected User</p>
+            <h2>User Summary</h2>
+          </div>
+          <div class="toolbar">
+            <button id="invalidate-sessions" class="ghost-button">Refresh Client</button>
+            <button id="delete-user" class="danger-button">Delete User</button>
+          </div>
+        </div>
+        <div class="summary-grid" id="user-summary-grid"></div>
+      </section>
+
+      <section class="panel hidden" id="table-panel">
+        <div class="section-title">
+          <div>
+            <p class="eyebrow">Archive Tables</p>
+            <h2 id="table-heading">Inventory</h2>
+          </div>
+          <div class="toolbar">
+            <input id="table-search" class="table-search" type="search" placeholder="Search tables or categories" />
+            <div id="table-select-wrap" class="table-select-wrap">
+              <button id="table-select-trigger" class="table-select-trigger" type="button" aria-haspopup="listbox" aria-expanded="false">
+                <span id="table-select-label">Select table…</span>
+                <svg class="table-select-caret" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <div id="table-select-panel" class="table-select-panel hidden" role="listbox"></div>
+            </div>
+            <button id="add-row" class="primary-button">Add Row</button>
+          </div>
+        </div>
+        <div id="table-meta" class="muted table-meta"></div>
+        <div id="weapon-table-filters" class="toolbar weapon-table-filters hidden">
+          <input id="weapon-table-search" class="table-search" type="search" placeholder="Search weapons in this user's inventory" />
+          <label class="filter-toggle">
+            <input id="weapon-equipped-only" type="checkbox">
+            <span>Equipped on selected deck only</span>
+          </label>
+        </div>
+        <div class="table-wrap">
+          <table id="editor-table"></table>
+        </div>
+        <div id="table-empty" class="empty-state hidden">No rows in this table for the selected user.</div>
+      </section>
+      </div>
+    </main>
+  </div>
+
+  <template id="cell-input-template">
+    <input class="table-input" />
+  </template>
+
+  <script src="/app.js" defer></script>
+</body>
+</html>
