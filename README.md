@@ -41,13 +41,30 @@ Mama's Toolkit is designed to be a high-performance, zero-dependency companion t
 
 ## Quick Start
 
-### 1. Run the server
-```powershell
+```bash
+# 1. Place the executable alongside lunar-tear
+#    Expected layout:
+#    ├── lunar-tear/
+#    │   └── server/
+#    │       └── assets/
+#    │           ├── master_data/               ← extracted master data JSONs
+#    │           └── release/
+#    │               ├── 20240404193219.bin.e   ← pristine master data
+#    │               └── database.bin.e         ← patched (served to client)
+#    └── mama-s-toolkit/                        ← toolkit folder
+#        └── mama-toolkit.exe                   
+
+# 2. Extract Master Data (one-time setup)
+#    You must extract the master data JSONs from the binary so the toolkit can build its index.
+#    Using dump_masterdata.py (from your lunar-scripts or similar tools):
+python dump_masterdata.py --input ../lunar-tear/server/assets/release/20240404193219.bin.e --output-dir ../lunar-tear/server/assets/master_data
+
+# 3. Run Mama's Toolkit
+#    The bundle_index.json will be automatically generated on the first run.
 ./mama-toolkit.exe --port 8084
 ```
 
-### 2. Access the UI
-Open `http://localhost:8084` in your browser.
+Open **http://localhost:8084** in your browser.
 
 ## Configuration
 
