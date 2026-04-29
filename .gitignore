@@ -1,9 +1,9 @@
 # Binaries
-# Allow the pre-built binary for users
-!mama-toolkit.exe
 *.exe
 *.exe~
 mama-toolkit
+# Allow the pre-built binary for users (must come after *.exe)
+!mama-toolkit.exe
 
 # OS files
 .DS_Store
