@@ -1,6 +1,6 @@
 # Mama's Toolkit
 
-A powerful, standalone save editor and content management suite for **NieR Re\[in\]carnation** (NieR Reincarnation) private servers.
+A powerful, standalone save editor and content management suite.
 
 Mama's Toolkit is designed to be a high-performance, zero-dependency companion to the `lunar-tear` project, providing an intuitive web interface for managing player data, inventory, and server-side content scheduling.
 
@@ -87,7 +87,7 @@ Mama's Toolkit can be configured via command-line flags or environment variables
     -   `cmd/mama-toolkit`: HTTP handlers and server initialization.
 -   **Frontend**: Vanilla HTML5, CSS3, and JavaScript.
     -   No framework required: Extremely fast load times and zero build steps for the UI.
-    -   Custom Design System: Tailored for the NieR aesthetic.
+    -   Custom Design System: Tailored for the game aesthetic.
 
 ## License
 
