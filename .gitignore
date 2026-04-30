@@ -1,7 +1,7 @@
 # Binaries
 *.exe
 *.exe~
-mama-toolkit
+/mama-toolkit
 # Allow the pre-built binary for users (must come after *.exe)
 !mama-toolkit.exe
 
