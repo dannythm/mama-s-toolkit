@@ -457,13 +457,18 @@ func (e *Editor) upsertRowDB(db *sql.DB, table string, ts *TableSchema, row map[
 	var cols []string
 	var placeholders []string
 	var values []any
-	for _, col := range ts.Columns {
-		if v, ok := row[col.Name]; ok {
-			cols = append(cols, col.Name)
-			placeholders = append(placeholders, "?")
-			values = append(values, v)
+	if r, ok := row["row"]; ok {
+		if rr, ok := r.(map[string]any); ok {
+			for _, col := range ts.Columns {
+				if v, ok := rr[col.Name]; ok {
+					cols = append(cols, col.Name)
+					placeholders = append(placeholders, "?")
+					values = append(values, v)
+				}
+			}
 		}
 	}
+
 	if len(cols) == 0 {
 		return fmt.Errorf("no columns to upsert")
 	}
